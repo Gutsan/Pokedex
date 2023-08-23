@@ -1,7 +1,8 @@
 .cardPokemon{
     background-image: url(./assets/img/back-poke.png);
-    background-size: 100%;
-    background-position: -10% 150%;
+    background-size: 50%;
+    background-position: 150% ;
     background-repeat: no-repeat;
+    
     
 }

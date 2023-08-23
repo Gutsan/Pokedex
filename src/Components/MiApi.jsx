@@ -7,7 +7,7 @@ export function MiApi ({ idPoke }) {
   const [pokemon, setPokemon]=useState({
     name:"",
     imgFront:"",
-    type:"",
+    type:"unknown",
   })
   
   useEffect(()=>{
@@ -19,12 +19,12 @@ export function MiApi ({ idPoke }) {
       const type= response.types[0].type.name
       setPokemon({name,imgFront,type})
     }
-    )
+    ).catch()
     },[])
 
     return (
       <>
-      <PokemonCard name={pokemon.name} type={pokemon.type} imgFront={pokemon.imgFront}/>
+      <PokemonCard name={pokemon.name} type={pokemon.type} imgFront={pokemon.imgFront} idPoke={idPoke}/>
       </>
     )
 };
