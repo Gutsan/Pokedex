@@ -3,7 +3,6 @@ import { colorFromType } from '../logic/const';
 
 export const PokemonCard = ({name, type, imgFront}) => {
   const colorType=colorFromType[type]
-  console.log(colorType[0])
   const FORMAT_CLASS=`cardPokemon w-48 h-80 p-5 rounded-lg flex flex-col justify-around items-center ${colorType[0]} shadow-md`
   return (
     <div className={FORMAT_CLASS}>
