@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
-
 import './App.css'
-
+import { PokemonCard } from './Components/PokemonCard'
 function App() {
 const [idPoke, setIdPokemon]=useState("")
 const ENDPOINT_POKEMON=`https://pokeapi.co/api/v2/pokemon/${idPoke}/`
@@ -24,13 +23,8 @@ const handlerChange=(e)=>{
 
   return (
     <>
-    <div>
-      <input type="number" placeholder='indique numero de pokemon' onChange={handlerChange}/>
-      <h3>{pokemon.name}</h3>
-      <h2>{pokemon.type}</h2>
-      <img src={pokemon.imgFront} alt="imagen de pokemon" />
-
-    </div>
+    <input type="number" placeholder='indique numero de pokemon' onChange={handlerChange}/>
+    <PokemonCard name={pokemon.name} type={pokemon.type} imgFront={pokemon.imgFront}/>
       <p></p>
     </>
   )
