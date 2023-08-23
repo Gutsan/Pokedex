@@ -1,6 +1,6 @@
 export const PokemonCard = ({name, type, imgFront}) => {
   return (
-    <div className="w-48 h-80 p-5
+    <div className="cardPokemon w-48 h-80 p-5
     border-solid border rounded-lg
     flex flex-col justify-around items-center 
     bg-amber-200">
