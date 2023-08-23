@@ -9,8 +9,8 @@ const [listPokemon, setListPokemon]=useState([1,2,3,4,5,6,7,8,9,10])
   return (
     <>
     <div className='flex gap-1 flex-wrap'>
-    {listPokemon.map(idPoke=> 
-      <MiApi idPoke={idPoke}/>
+    {listPokemon.map((idPoke,index)=> 
+      <MiApi key={index} idPoke={idPoke}/>
     )}
     </div>
     </>
