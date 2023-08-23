@@ -1,17 +1,3 @@
-// export const getDataPokemon = (listPokemon, setPokemons, pokemons) => {
-//     listPokemon.forEach((idPoke) => {
-//       const ENDPOINT_POKEMON = `https://pokeapi.co/api/v2/pokemon/${idPoke}/`
-//       fetch(ENDPOINT_POKEMON)
-//         .then(res => res.json())
-//         .then(data => {
-//           const imgFront = data.sprites.other.dream_world.front_default
-//           const name = data.name
-//           const type = data.types[0].type.name
-//           console.log({name, imgFront, type })
-//         }
-//         )
-//     })
-//   }
 import { PokemonCard } from "./PokemonCard";
 import { useEffect, useState } from 'react'
 
