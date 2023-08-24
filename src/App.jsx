@@ -3,6 +3,7 @@ import './App.css'
 import { MiApi } from './Components/MiApi'
 import {cantPokemonGeneracion} from './logic/const'
 import { Header } from './Components/Header'
+import { Navbar } from './Components/Navbar'
 function App() {
 const [listPokemon, setListPokemon]=useState([1,2,3,4,5,6,7,8,9,10,11,12])
 const [generation, setGeneration]=useState(2)
@@ -21,12 +22,14 @@ const handleChange=(e)=>{
   return (
     <>
     <Header />
-    
-    <div className='w-5/6 grid grid-cols-3 gap-3'>
+    <div className='flex justify-center gap-5'>
+    <Navbar />
+    <div className='w-5/6 grid grid-cols-3 gap-2 place-items-center'>
     {listPokemon.map((idPoke)=> 
       <MiApi key={idPoke} idPoke={idPoke}/>
     )}
     <input type="number" min="1" onChange={handleChange} />
+    </div>
     </div>
     </>
   )
