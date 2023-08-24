@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import { MiApi } from './Components/MiApi'
 import {cantPokemonGeneracion} from './logic/const'
+import { Header } from './Components/Header'
 function App() {
 const [listPokemon, setListPokemon]=useState([1,2,3,4,5,6,7,8,9,10,11,12])
 const [generation, setGeneration]=useState(2)
@@ -19,6 +20,8 @@ const handleChange=(e)=>{
 }
   return (
     <>
+    <Header />
+    
     <div className='w-5/6 grid grid-cols-3 gap-3'>
     {listPokemon.map((idPoke)=> 
       <MiApi key={idPoke} idPoke={idPoke}/>
