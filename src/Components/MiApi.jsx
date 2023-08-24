@@ -1,6 +1,5 @@
 import { PokemonCard } from "./PokemonCard";
 import { useEffect, useState } from 'react'
-
 export function MiApi ({ idPoke }) {
   
   const ENDPOINT_POKEMON=`https://pokeapi.co/api/v2/pokemon/${idPoke}/`
