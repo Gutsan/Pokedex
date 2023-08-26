@@ -17,7 +17,8 @@ function App() {
   ]);
   const [searchValue, setSearchValue] = useState("");
   const [RenderPage, setRenderPage] = useState(1);
-  const [pokemonByType, setPokemonBytype] = useState([]);
+  const [sortType, setSortType] = useState(["number"]);
+  
   //Cambiar limites para renderizar
   useEffect(() => {
     const limit = 12;
@@ -31,22 +32,11 @@ function App() {
       const ENDPOINT_SEARCH = `https://pokeapi.co/api/v2/pokemon?offset=0&limit=649`;
       getSearchByName(ENDPOINT_SEARCH);
     } else if (searchType === "type") {
-      const ENDPOINT_SEARCH = `https://pokeapi.co/api/v2/type`;
-      getSearchByType(ENDPOINT_SEARCH);
+    //UderConstruccion
     }
-  }, [searchType, searchValue, endpointLimit]);
+  }, [searchValue, endpointLimit,dataRequestPokemon,sortType]);
 
   //Manejo de cambio de pagina renderizada
-  const handleChange = (e) => {
-    if (
-      e.target.value > 0 &&
-      ROUNDUP(dataRequestPokemon.length, 12) >= e.target.value
-    ) {
-      setRenderPage(e.target.value);
-    } else {
-      e.target.value = ROUNDUP(dataRequestPokemon.length, 12);
-    }
-  };
   const handleClickMas = () => {
     const newRenderPage = RenderPage + 1;
     if (
@@ -74,16 +64,31 @@ function App() {
       const arrayFilter = await data.results.filter((pokemon) =>
         pokemon.name.toLowerCase().includes(searchValue.toLowerCase())
       );
+      sortPokemon(sortType,arrayFilter)
       setDataRequestPokemon(arrayFilter);
     } catch (error) {}
   };
-
+  const handleOrderChange=(e)=>{ 
+    setSortType(e.target.value)
+  }
+  const sortPokemon=(typeOrder,arrayPokemon)=>{
+    if(typeOrder==="Alphabetic"){
+      arrayPokemon.sort((a,b)=>{
+        if (a.name > b.name) {
+          return 1;
+        }
+        if (a.name < b.name) {
+          return -1;
+        }
+      })
+    }
+  }
   return (
     <>
       <Header />
       <div className="flex flex-col items-center">
         <div className="w-[1000px] flex h-10 items-center justify-between">
-          <Searcher setSearchValue={setSearchValue} />
+          <Searcher setSearchValue={setSearchValue} setRenderPage={setRenderPage} />
           <div className="flex w-16">
             <button
               value={1}
@@ -101,6 +106,10 @@ function App() {
               <IconChevronRight />
             </button>
           </div>
+          <select  name="" id="" onChange={handleOrderChange}>
+            <option value="number">Numero</option>
+            <option value="Alphabetic">A-Z</option>
+          </select>
         </div>
         <div className="w-[1000px] h-[710px] grid grid-cols-3 gap-2 place-items-center">
           {dataRequestPokemon.map((data, index) => {
