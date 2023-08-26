@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { MiApi } from "./Components/MiApi";
-import { cantPokemonGeneracion } from "./logic/const";
 import { Header } from "./Components/Header";
-import { Navbar } from "./Components/Navbar";
 import { Searcher } from "./Components/Searcher";
 import { ROUNDUP } from "./logic/function";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
+
 function App() {
   const [endpointLimit, setEndpointLimit] = useState([0, 11]);
   const [searchType, setSearchType] = useState("name");
@@ -18,7 +17,7 @@ function App() {
   ]);
   const [searchValue, setSearchValue] = useState("");
   const [RenderPage, setRenderPage] = useState(1);
-
+  const [pokemonByType, setPokemonBytype] = useState([]);
   //Cambiar limites para renderizar
   useEffect(() => {
     const limit = 12;
@@ -26,11 +25,14 @@ function App() {
     setEndpointLimit([offset, offset + limit - 1]);
   }, [RenderPage]);
 
-  //Función para modificar endpoin según busqueda
+  //Función para modificar endpoint según busqueda
   useEffect(() => {
     if (searchType === "name") {
       const ENDPOINT_SEARCH = `https://pokeapi.co/api/v2/pokemon?offset=0&limit=649`;
       getSearchByName(ENDPOINT_SEARCH);
+    } else if (searchType === "type") {
+      const ENDPOINT_SEARCH = `https://pokeapi.co/api/v2/type`;
+      getSearchByType(ENDPOINT_SEARCH);
     }
   }, [searchType, searchValue, endpointLimit]);
 
@@ -69,21 +71,19 @@ function App() {
     try {
       const res = await fetch(ENDPOINT);
       const data = await res.json();
-      const arrayFilter = data.results.filter((pokemon) =>
+      const arrayFilter = await data.results.filter((pokemon) =>
         pokemon.name.toLowerCase().includes(searchValue.toLowerCase())
       );
       setDataRequestPokemon(arrayFilter);
     } catch (error) {}
   };
+
   return (
     <>
       <Header />
       <div className="flex flex-col items-center">
         <div className="w-[1000px] flex h-10 items-center justify-between">
-          <Searcher
-            setSearchType={setSearchType}
-            setSearchValue={setSearchValue}
-          />
+          <Searcher setSearchValue={setSearchValue} />
           <div className="flex w-16">
             <button
               value={1}
