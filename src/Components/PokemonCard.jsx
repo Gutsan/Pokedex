@@ -3,7 +3,7 @@ import { colorFromType } from '../logic/const';
 
 export const PokemonCard = ({name, type, imgFront,idPoke}) => {
   const colorType=colorFromType[type]
-  const FORMAT_CLASS=`cardPokemon w-80 h-40 p-5 rounded-lg flex justify-around items-center ${colorType[0]} shadow-md`
+  const FORMAT_CLASS=`cardPokemon transition-all min-w-full max-w-fit h-40 p-5 rounded-lg flex justify-around items-center ${colorType[0]} shadow-md`
   
   if (idPoke.toString().length===1){
     idPoke="#00"+ idPoke.toString()

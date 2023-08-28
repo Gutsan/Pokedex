@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
+
 import "./App.css";
+
 import { MiApi } from "./Components/MiApi";
 import { Header } from "./Components/Header";
 import { Searcher } from "./Components/Searcher";
-import { ROUNDUP } from "./logic/function";
-import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
+import { ModfPage } from "./Components/Pages";
+import { SortSelect } from "./Components/SortSelect";
 
 function App() {
   const [endpointLimit, setEndpointLimit] = useState([0, 11]);
-  const [searchType, setSearchType] = useState("name");
+  const [searchType, setSearchType] = useState("name"); //Pendiente cambio de busqueda por tipo
   const [dataRequestPokemon, setDataRequestPokemon] = useState([
     {
       name: "bulbasaur",
@@ -19,7 +21,7 @@ function App() {
   const [RenderPage, setRenderPage] = useState(1);
   const [sortType, setSortType] = useState(["number"]);
   
-  //Cambiar limites para renderizar
+  //Cambiar limites para renderizar distinas paginas
   useEffect(() => {
     const limit = 12;
     const offset = limit * RenderPage - limit;
@@ -36,25 +38,6 @@ function App() {
     }
   }, [searchValue, endpointLimit,dataRequestPokemon,sortType]);
 
-  //Manejo de cambio de pagina renderizada
-  const handleClickMas = () => {
-    const newRenderPage = RenderPage + 1;
-    if (
-      newRenderPage > 0 &&
-      ROUNDUP(dataRequestPokemon.length, 12) >= newRenderPage
-    ) {
-      setRenderPage(newRenderPage);
-    }
-  };
-  const handleClickMenos = () => {
-    const newRenderPage = RenderPage - 1;
-    if (
-      newRenderPage > 0 &&
-      ROUNDUP(dataRequestPokemon.length, 12) >= newRenderPage
-    ) {
-      setRenderPage(newRenderPage);
-    }
-  };
 
   //Obtener datos de pokemones según busqueda (por derecto busca a todos)
   const getSearchByName = async (ENDPOINT) => {
@@ -65,12 +48,9 @@ function App() {
         pokemon.name.toLowerCase().includes(searchValue.toLowerCase())
       );
       sortPokemon(sortType,arrayFilter)
-      setDataRequestPokemon(arrayFilter);
+      setDataRequestPokemon(arrayFilter)
     } catch (error) {}
   };
-  const handleOrderChange=(e)=>{ 
-    setSortType(e.target.value)
-  }
   const sortPokemon=(typeOrder,arrayPokemon)=>{
     if(typeOrder==="Alphabetic"){
       arrayPokemon.sort((a,b)=>{
@@ -87,37 +67,18 @@ function App() {
     <>
       <Header />
       <div className="flex flex-col items-center">
-        <div className="w-[1000px] flex h-10 items-center justify-between">
+        <div className="w-full gap-5 flex h-20 items-center justify-between">
           <Searcher setSearchValue={setSearchValue} setRenderPage={setRenderPage} />
-          <div className="flex w-16">
-            <button
-              value={1}
-              className="align-middle"
-              onClick={handleClickMenos}
-            >
-              <IconChevronLeft />
-            </button>
-            <p>{RenderPage}</p>
-            <button
-              value={-1}
-              className="align-middle"
-              onClick={handleClickMas}
-            >
-              <IconChevronRight />
-            </button>
-          </div>
-          <select  name="" id="" onChange={handleOrderChange}>
-            <option value="number">Numero</option>
-            <option value="Alphabetic">A-Z</option>
-          </select>
+          <SortSelect setSortType={setSortType} />
         </div>
-        <div className="w-[1000px] h-[710px] grid grid-cols-3 gap-2 place-items-center">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-5 place-items-center ">
           {dataRequestPokemon.map((data, index) => {
             if (index >= endpointLimit[0] && index <= endpointLimit[1]) {
               return <MiApi key={index} ENDPOINT_POKEMON={data.url} />;
             }
           })}
         </div>
+        <ModfPage RenderPage={RenderPage} setRenderPage={setRenderPage} dataRequestPokemon={dataRequestPokemon}/>
       </div>
     </>
   );
