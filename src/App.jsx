@@ -7,6 +7,7 @@ import { Header } from "./Components/Header";
 import { Searcher } from "./Components/Searcher";
 import { ModfPage } from "./Components/Pages";
 import { SortSelect } from "./Components/SortSelect";
+import { Footer } from "./Components/Footer";
 
 function App() {
   const [endpointLimit, setEndpointLimit] = useState([0, 11]);
@@ -79,6 +80,7 @@ function App() {
           })}
         </div>
         <ModfPage RenderPage={RenderPage} setRenderPage={setRenderPage} dataRequestPokemon={dataRequestPokemon}/>
+        <Footer/>
       </div>
     </>
   );
