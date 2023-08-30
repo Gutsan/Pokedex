@@ -1,16 +1,16 @@
 # PokeDex Utilizando PokeApi Reacte+TailwindCSS
 
-PokeDex utilizando api pública pokeApi.co, de la cual se obtiene datos de pokemon como nombre, id, tipo e imagen. Esta pagina considerá interacción con usuario según criterios para busqueda de pokemon y tipo de orden que se deben renderizar datos.
+PokeDex utilizando api pública [PokeApi](pokeApi.co), de la cual se obtiene datos de pokemon como nombre, id, tipo e imagen. Esta pagina considerá interacción con usuario según criterios para busqueda de pokemon y tipo de orden que se deben renderizar datos.
 
 
 [Ver Pagina](https://pokedex-gutsan.netlify.app/)
 
 ## Explicación general
 
-[Ver explicación en YouTube]()
+[Ver explicación en YouTube](https://youtu.be/wh-Vy6V8RtE)
 
 Landing Page dividida en 6 componentes de react:
-```mermaid
+```
 App (principal)
 Header
 Searcher
