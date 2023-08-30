@@ -20,11 +20,11 @@ export const colorFromType={
     shadow:["bg-neutral-400","bg-neutral-500"],
     dark:["bg-zinc-600","bg-zinc-700"],
 }
-export const cantPokemonGeneracion=[
-    {first:1,last:151},
-    {first:152,last:251},
-    {first:252,last:386},
-    {first:387,last:493},
-    {first:494,last:649},
-    {first:650,last:721}
-]
+// export const cantPokemonGeneracion=[
+//     {first:1,last:151},
+//     {first:152,last:251},
+//     {first:252,last:386},
+//     {first:387,last:493},
+//     {first:494,last:649},
+//     {first:650,last:721}
+// ]

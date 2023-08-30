@@ -37,7 +37,7 @@ function App() {
     } else if (searchType === "type") {
     //UderConstruccion
     }
-  }, [searchValue, endpointLimit,dataRequestPokemon,sortType]);
+  }, [searchValue,dataRequestPokemon,sortType]);
 
 
   //Obtener datos de pokemones según busqueda (por derecto busca a todos)
@@ -64,6 +64,8 @@ function App() {
       })
     }
   }
+
+  
   return (
     <>
       <Header />
