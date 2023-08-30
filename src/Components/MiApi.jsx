@@ -11,7 +11,7 @@ export function MiApi({ ENDPOINT_POKEMON }) {
   //Modificar Array de Pokemon a renderizar
   useEffect(() => {
     getInfoPokemon();
-  },);
+  },[ENDPOINT_POKEMON]);
   // Función para obtener datos de pokemon en api
   const getInfoPokemon = async () => {
     const res = await fetch(ENDPOINT_POKEMON);
