@@ -9,3 +9,16 @@ export const ROUNDUP=(num,div)=>{
 export const getIdForEndPoint=(stringEnpoint)=>{
 stringEnpoint.split("/")[stringEnpoint.split("/").length-2]
 }
+
+export const sortPokemon=(typeOrder,arrayPokemon)=>{
+    if(typeOrder==="Alphabetic"){
+      arrayPokemon.sort((a,b)=>{
+        if (a.name > b.name) {
+          return 1;
+        }
+        if (a.name < b.name) {
+          return -1;
+        }
+      })
+    }
+}

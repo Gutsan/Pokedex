@@ -9,9 +9,12 @@ import { ModfPage } from "./Components/Pages";
 import { SortSelect } from "./Components/SortSelect";
 import { Footer } from "./Components/Footer";
 
+//import { sortPokemon } from "./logic/function";
+import { getSearchByName } from "./logic/callApi";
+
 function App() {
   const [endpointLimit, setEndpointLimit] = useState([0, 11]);
-  const [searchType, setSearchType] = useState("name"); //Pendiente cambio de busqueda por tipo
+  //const [searchType, setSearchType] = useState("name"); //Pendiente cambio de busqueda por tipo
   const [dataRequestPokemon, setDataRequestPokemon] = useState([
     {
       name: "bulbasaur",
@@ -21,6 +24,7 @@ function App() {
   const [searchValue, setSearchValue] = useState("");
   const [RenderPage, setRenderPage] = useState(1);
   const [sortType, setSortType] = useState(["number"]);
+  const ENDPOINT_SEARCH = `https://pokeapi.co/api/v2/pokemon?offset=0&limit=649`;
   
   //Cambiar limites para renderizar distinas paginas
   useEffect(() => {
@@ -31,41 +35,12 @@ function App() {
 
   //Función para modificar endpoint según busqueda
   useEffect(() => {
-    if (searchType === "name") {
-      const ENDPOINT_SEARCH = `https://pokeapi.co/api/v2/pokemon?offset=0&limit=649`;
-      getSearchByName(ENDPOINT_SEARCH);
-    } else if (searchType === "type") {
-    //UderConstruccion
-    }
-  }, [searchValue,dataRequestPokemon,sortType]);
+    console.log("HOLA")
+      getSearchByName(ENDPOINT_SEARCH, searchValue, setDataRequestPokemon, sortType);
+      console.log("HOLA3")
+  }, [searchValue,sortType]);
 
 
-  //Obtener datos de pokemones según busqueda (por derecto busca a todos)
-  const getSearchByName = async (ENDPOINT) => {
-    try {
-      const res = await fetch(ENDPOINT);
-      const data = await res.json();
-      const arrayFilter = await data.results.filter((pokemon) =>
-        pokemon.name.toLowerCase().includes(searchValue.toLowerCase())
-      );
-      sortPokemon(sortType,arrayFilter)
-      setDataRequestPokemon(arrayFilter)
-    } catch (error) {}
-  };
-  const sortPokemon=(typeOrder,arrayPokemon)=>{
-    if(typeOrder==="Alphabetic"){
-      arrayPokemon.sort((a,b)=>{
-        if (a.name > b.name) {
-          return 1;
-        }
-        if (a.name < b.name) {
-          return -1;
-        }
-      })
-    }
-  }
-
-  
   return (
     <>
       <Header />
