@@ -1,9 +1,11 @@
 import { BadgeType } from './BadgeType'
 import { colorFromType } from '../logic/const';
+import { Link } from 'react-router-dom';
+import { IconArrowDownRight } from '@tabler/icons-react';
 
-export const PokemonCard = ({name, type, imgFront,idPoke}) => {
+export const PokemonCard = ({name, type, imgFront,idPoke,setPokemonSelect}) => {
   const colorType=colorFromType[type]
-  const FORMAT_CLASS=`cardPokemon transition-all min-w-full max-w-11/12 h-40 p-5 rounded-lg flex justify-around items-center ${colorType[0]} shadow-md`
+  const FORMAT_CLASS=`cardPokemon transition-all min-w-full w-80 h-40 p-5 rounded-lg flex justify-around items-center ${colorType[0]} shadow-md`
   
   if (idPoke.toString().length===1){
     idPoke="#00"+ idPoke.toString()
@@ -12,6 +14,10 @@ export const PokemonCard = ({name, type, imgFront,idPoke}) => {
   }else{
     idPoke="#"+ idPoke.toString()
   }
+const handlerClick=(e)=>{
+  setPokemonSelect(e.target.id)
+}
+
   return (
     <div className={FORMAT_CLASS}>
       <div className='flex flex-col'>
@@ -22,6 +28,9 @@ export const PokemonCard = ({name, type, imgFront,idPoke}) => {
       <div className='w-1/2 h-full '>
       <img className="w-full h-full" src={imgFront} alt="imagen de pokemon" />
       </div>
+      <Link to="/Detalle" onClick={handlerClick} id={name} className='plusPokemon'>
+      
+      </Link>
     </div>
   );
 };

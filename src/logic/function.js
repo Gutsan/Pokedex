@@ -22,3 +22,14 @@ export const sortPokemon=(typeOrder,arrayPokemon)=>{
       })
     }
 }
+
+  // Función para obtener datos de pokemon en api
+  export const getInfoPokemon = async (ENDPOINT_POKEMON,setPokemon) => {
+    const res = await fetch(ENDPOINT_POKEMON);
+    const data = await res.json();
+    const imgFront = data.sprites.other.dream_world.front_default;
+    const name = data.name;
+    const type = data.types[0].type.name;
+    const id = data.id;
+    setPokemon({ name, imgFront, type, id });
+  };
