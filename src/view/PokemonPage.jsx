@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 
 export const ViewPokemon = ({pokemon}) => {
     
-  useEffect({},[])
+  //useEffect({},[])
   
   const colorType=colorFromType[type]
   const FORMAT_CLASS=`cardPokemon transition-all min-w-full max-w-11/12 h-40 p-5 rounded-lg flex justify-around items-center ${colorType[0]} shadow-md`

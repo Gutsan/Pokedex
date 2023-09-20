@@ -1,5 +1,8 @@
 import { IconSortDescending2 } from "@tabler/icons-react";
-export const SortSelect = ({ setSortType }) => {
+import { useContext } from "react";
+import { FilterContext } from "../Context/filter";
+export const SortSelect = () => {
+  const {setSortType}=useContext(FilterContext)
   const handleOrderChange = (e) => {
     setSortType(e.target.value);
   };

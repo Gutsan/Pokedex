@@ -1,5 +1,9 @@
 import { IconSearch } from '@tabler/icons-react';
-export const Searcher = ({setSearchValue,setRenderPage}) => {
+import { useContext } from 'react';
+import { FilterContext } from '../Context/filter';
+export const Searcher = ({setRenderPage}) => {
+  const {setSearchValue}=useContext(FilterContext)
+  
   const handlerInputChange = (e) => {
     setSearchValue(e.target.value);
     setRenderPage(1)
