@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react"
 import {getListFromApi } from "../logic/callApi";
-import { getInfoPokemon } from "../logic/function";
+import { getInfoEvolution, getInfoPokemon, getInfoSpecies } from "../logic/function";
 
 
 export const usePokemon=(ENDPOINT_POKEMON)=>{
@@ -9,10 +9,25 @@ export const usePokemon=(ENDPOINT_POKEMON)=>{
         imgFront: "",
         type: "unknown",
         id: "000",
+        stats:[
+          {
+            base_stat:0,
+            stat:{
+              name:"",
+              url:""
+            }
+          }
+        ],
+        height:0,
+        weight:0,
+        base_experience:0,
       });
+
       useEffect(() => {
       getInfoPokemon(ENDPOINT_POKEMON).then(poke=>setPokemon(poke));
-      },[ENDPOINT_POKEMON]);
+      
+    },[ENDPOINT_POKEMON]);
+
     return pokemon
 }
 
@@ -31,3 +46,21 @@ useEffect(()=>{
   return dataListPokemon
 }
 
+export const useSpecie=(idPoke)=>{
+  const [specieData, setSpecieData] = useState({
+    curiosities:[],
+    evolutionsURL:""
+  });
+    useEffect(() => {
+    getInfoSpecies(idPoke).then(poke=>setSpecieData(poke));
+    },[idPoke]);
+  return specieData
+}
+
+export const useEvolutions=(evolutionUrl)=>{
+  const [evolution, SetEvolution]=useState({nameEvolutions:[]})
+  useEffect(()=>{
+    getInfoEvolution(evolutionUrl).then(evol=>SetEvolution(evol))
+  },[evolutionUrl])
+  return evolution
+}

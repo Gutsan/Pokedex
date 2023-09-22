@@ -22,7 +22,11 @@ export const sortPokemon=(typeOrder,arrayPokemon)=>{
       })
     }
 }
-
+export const getInfoForApi = async (ENDPOINT_POKEMON) => {
+  const res = await fetch(ENDPOINT_POKEMON);
+  const data = await res.json();
+  return(data)
+}
   // Función para obtener datos de pokemon en api
   export const getInfoPokemon = async (ENDPOINT_POKEMON) => {
     const res = await fetch(ENDPOINT_POKEMON);
@@ -31,5 +35,37 @@ export const sortPokemon=(typeOrder,arrayPokemon)=>{
     const name = data.name;
     const type = data.types[0].type.name;
     const id = data.id;
-    return({ name, imgFront, type, id });
+    const height=data.height
+    const weight=data.weight
+    const base_experience=data.base_experience
+    const stats=data.stats
+    return({ name, imgFront, type, id, height,weight,base_experience,stats});
   };
+
+  export const getInfoSpecies = async (idPokemon) => {
+    const ENDPOINT_POKEMON=`https://pokeapi.co/api/v2/pokemon-species/${idPokemon}`
+    const res = await fetch(ENDPOINT_POKEMON);
+    const data = await res.json();
+    const evolutionsURL=data.evolution_chain.url
+    const curiosities=data.flavor_text_entries.filter((flavor)=>flavor.language.name==="es")
+  .map((flavor)=>flavor.flavor_text +"\n").slice(0,3);
+    
+    return({curiosities,evolutionsURL});
+  }; 
+
+  export const getInfoEvolution=async(endpoint)=>{
+    const res=await fetch(endpoint)
+    const data = await res.json();
+    
+    let evolution=data.chain.evolves_to
+
+    const nameEvolutions=[]
+    nameEvolutions.push(data.chain.species.name)
+
+    while (evolution.length>0){
+      nameEvolutions.push(evolution[0].species.name)
+      evolution=evolution[0].evolves_to
+    }
+    
+    return({nameEvolutions})
+  }
