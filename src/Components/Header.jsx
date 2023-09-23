@@ -13,7 +13,7 @@ export const Header=()=>{
         <div className=''>             
             <p className='flex g-5 text-2xl items-center text-slate-400'>P<IconPokeball className='text-red-600'/>  KEDEX</p>
         </div>
-        <nav className='flex justify-between gap-5'>
+        <nav className='flex justify-between gap-5 navBar h-2/4'>
             <NavLink to="/">Home</NavLink>
             <NavLink to="/Pokemon">Pokemon</NavLink>
         </nav>
