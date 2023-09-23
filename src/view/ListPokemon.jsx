@@ -22,20 +22,21 @@ export const ListPokemon=()=>{
     {console.log(RenderPage)}
       <div className="flex flex-col items-center 
       animate-fade animate-once animate-duration-1000 animate-delay-1000 animate-ease-out animate-normal animate-fill-both">
-        <div className="w-full gap-5 flex h-20 items-center justify-between">
+        <div className="w-full gap-5 flex h-20 items-center justify-between px-10">
           <Searcher />
           <SortSelect />
         </div>
-        <div className="w-full grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-5 place-items-center ">
+        <div className="w-full flex flex-wrap justify-center gap-5 place-items-center ">
           {dataListPokemon.map((data, index) => {
             if (index >= endpointLimit.lowerLimit && index <= endpointLimit.upperLimit) {
               return  <PokemonCard key={index} endpoint={data.url}/>;
             }
           })}
         </div>
-        <ModfPage dataRequestPokemon={dataListPokemon}/>
+        <ModfPage dataListPokemon={dataListPokemon}/>
 
       </div>
     </>
   );
 }
+//grid-cols-1 lg:grid-cols-4 md:grid-cols-2

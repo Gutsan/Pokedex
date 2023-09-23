@@ -4,7 +4,7 @@ import { ROUNDUP } from "../logic/function";
 import { useContext } from "react";
 import { PageContext } from "../Context/paginado";
 
-export const ModfPage = ({dataRequestPokemon}) => {
+export const ModfPage = ({dataListPokemon}) => {
   const {RenderPage, setRenderPage} = useContext(PageContext)
   
   //Manejo de cambio de pagina renderizada, Round se utiliza para cambiar limites de pagina
@@ -12,7 +12,7 @@ export const ModfPage = ({dataRequestPokemon}) => {
     const newRenderPage = RenderPage + 1;
     if (
       newRenderPage > 0 &&
-      ROUNDUP(dataRequestPokemon.length, 12) >= newRenderPage
+      ROUNDUP(dataListPokemon.length, 12) >= newRenderPage
     ) {
       setRenderPage(newRenderPage);
     }
@@ -21,7 +21,7 @@ export const ModfPage = ({dataRequestPokemon}) => {
     const newRenderPage = RenderPage - 1;
     if (
       newRenderPage > 0 &&
-      ROUNDUP(dataRequestPokemon.length, 12) >= newRenderPage
+      ROUNDUP(dataListPokemon.length, 12) >= newRenderPage
     ) {
       setRenderPage(newRenderPage);
     } 

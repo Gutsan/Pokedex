@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 export const PokemonCard = ({endpoint}) => {
   const {name, type, imgFront,id}=usePokemon(endpoint)
   const {colorBg1,colorBg2,textColor}=colorFromType[type]
-  const FORMAT_CLASS=`cardPokemon transition-all min-w-full w-80 h-40 p-5 rounded-lg flex justify-around items-center ${colorBg1} shadow-md hover:opacity-80 cursor-pointer`
+  const FORMAT_CLASS=`cardPokemon transition-all  w-80 h-40 p-5 rounded-lg flex justify-around items-center ${colorBg1} shadow-md hover:opacity-80 cursor-pointer`
   const navigate=useNavigate()
 
   const handlerClick=(e)=>{

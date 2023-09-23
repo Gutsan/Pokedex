@@ -16,19 +16,21 @@ export const PokemonPage = () => {
   const CLASSNAME_TITULO2=`text-2xl ${textColor}`
   const altImg= `Imagen de ${name}`
   return (
-    <div className="flex justify-center w-full min-h-max">
-      <section className="w-1/4 min-h-max flex flex-col items-center justify-center my-5">
-        <img className="w-11/12" src={imgFront} alt={altImg} />
-        <section className="flex flex-wrap gap-5 text-white">
-        <PokemonKpi name="Height" kpi={height} color={textColor}/>
-        <PokemonKpi name="Weight" kpi={weight} color={textColor}/>
+    <div className="flex justify-center item-center flex-wrap w-full min-h-max text-white">
+      <section className="w-1/4 min-w-[300px] min-h-max flex flex-col items-center justify-center my-5">
+        <img className="w-11/12 max-h-max" src={imgFront} alt={altImg} />
+        <section className="flex flex-wrap gap-5">
+        <PokemonKpi name="Altura" kpi={height} color={textColor}/>
+        <PokemonKpi name="Peso" kpi={weight} color={textColor}/>
         <PokemonKpi name="Experiencia" kpi={base_experience} color={textColor}/>
         </section>
       </section>
-      <section className="w-2/4 min-h-max flex flex-col i justify-center my-5 gap-3">
+      <section className="w-2/4 min-w-[0px] min-h-max flex flex-col i justify-center my-5 gap-3">
         <h1 className={CLASSNAME_TITULO}>{name.toUpperCase()} <span>#{id}</span></h1>
-        <p className="text-white">{curiosities}</p>
+        <p className="">{curiosities}</p>
+        <div className="text-slate-800">
         <BadgeType type={type.toLowerCase()} color={colorBg2}/>
+        </div>
         <div className="flex flex-col">
         {stats.map(((stat,index)=>
           <BarStats key={index} name={stat.stat.name} value={stat.base_stat} color={colorBg2}/>
@@ -43,7 +45,7 @@ export const PokemonPage = () => {
           </div>
         </div>
       </section>
-      <section>
+      <section className="w-full text-right px-10 pb-5">
         <Link to="/pokemon">
           Volver
         </Link>
