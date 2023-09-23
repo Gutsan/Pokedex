@@ -7,20 +7,23 @@ import { useState,useEffect, useContext } from "react";
 import { useListPokemon } from "../hooks/PokemonHook";
 import { FilterContext } from "../Context/filter";
 import { usePageRange } from "../hooks/PageView";
+import { PageContext } from "../Context/paginado";
 
 
 export const ListPokemon=()=>{
   // const [endpointLimit, setEndpointLimit] = useState([0, 11]);
   const {searchValue,sortType} = useContext(FilterContext);
   const dataListPokemon=useListPokemon(649,searchValue,sortType)
-  const [RenderPage, setRenderPage] = useState(1);
+  const {RenderPage} = useContext(PageContext);
   const endpointLimit=usePageRange(RenderPage,12)
   
     return (
     <>
-      <div className="flex flex-col items-center">
+    {console.log(RenderPage)}
+      <div className="flex flex-col items-center 
+      animate-fade animate-once animate-duration-1000 animate-delay-1000 animate-ease-out animate-normal animate-fill-both">
         <div className="w-full gap-5 flex h-20 items-center justify-between">
-          <Searcher setRenderPage={setRenderPage} />
+          <Searcher />
           <SortSelect />
         </div>
         <div className="w-full grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-5 place-items-center ">
@@ -30,7 +33,7 @@ export const ListPokemon=()=>{
             }
           })}
         </div>
-        <ModfPage RenderPage={RenderPage} setRenderPage={setRenderPage} dataRequestPokemon={dataListPokemon}/>
+        <ModfPage dataRequestPokemon={dataListPokemon}/>
 
       </div>
     </>

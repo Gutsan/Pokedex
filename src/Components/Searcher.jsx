@@ -1,9 +1,12 @@
 import { IconSearch } from '@tabler/icons-react';
 import { useContext } from 'react';
 import { FilterContext } from '../Context/filter';
-export const Searcher = ({setRenderPage}) => {
+import { PageContext } from '../Context/paginado';
+
+
+export const Searcher = () => {
   const {setSearchValue}=useContext(FilterContext)
-  
+  const {setRenderPage} = useContext(PageContext)
   const handlerInputChange = (e) => {
     setSearchValue(e.target.value);
     setRenderPage(1)

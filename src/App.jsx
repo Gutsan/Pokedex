@@ -8,6 +8,7 @@ import { PokemonPage } from "./view/PokemonPage";
 import { Loader } from "./Components/Loader";
 import { useContext } from "react";
 import { LouderContext } from "./Context/contextLouder";
+import { PageProvider } from "./Context/paginado";
 
 function App() {
   const {louder}=useContext(LouderContext)
@@ -21,9 +22,11 @@ function App() {
           <Route
             path="/Pokemon"
             element={
-              <FilterPovider>
-                <ListPokemon />
-              </FilterPovider>
+              <PageProvider>
+                <FilterPovider>
+                  <ListPokemon />
+                </FilterPovider>
+              </PageProvider>
             }
           />
           <Route path="/Pokemon/:idPoke" element={<PokemonPage />} />
