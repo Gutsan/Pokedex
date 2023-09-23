@@ -1,24 +1,104 @@
-export const colorFromType={
-    unknown:["bg-white","bg-slate-50","inherit"],
-    normal:["bg-neutral-50","bg-neutral-100","neutral-50"],
-    electric:["bg-yellow-100","bg-yellow-300","yellow-100"],
-    flying:["bg-sky-100","bg-sky-200","sky-100"],
-    ice:["bg-cyan-200","bg-cyan-300","cyan-200"],
-    water:["bg-blue-200","bg-blue-500","blue-200"],
-    poison:["bg-violet-500","bg-violet-700","violet-500"],
-    ground:["bg-yellow-500","bg-yellow-700","yellow-500"],
-    bug:["bg-lime-200","bg-lime-400","lime-200"],
-    ghost:["bg-purple-600","bg-purple-700","purple-600"],
-    fire:["bg-orange-300","bg-orange-500","orange-600"],
-    grass:["bg-green-200","bg-green-600","green-200"],
-    fighting:["bg-orange-700","bg-orange-800","orange-700"],
-    psychic:["bg-fuchsia-300","bg-fuchsia-400","fuchsia-300"],
-    dragon:["bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500","bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500","indigo-500"],
-    fairy:["bg-pink-200","bg-pink-300","pink-200"],
-    rock:["bg-gray-300","bg-gray-400","gray-300"],
-    steel:["bg-slate-400","bg-slate-500","slate-400"],
-    shadow:["bg-neutral-400","bg-neutral-500","neutral-400"],
-    dark:["bg-zinc-600","bg-zinc-700","zinc-600"],
+export const colorFromType = {
+  unknown: {
+    colorBg1: "bg-white",
+    colorBg2: "bg-slate-50",
+    textColor: "text-inherit"
+  },
+  normal: {
+    colorBg1: "bg-neutral-50",
+    colorBg2: "bg-neutral-100",
+    textColor: "text-neutral-50"
+  },
+  electric: {
+    colorBg1: "bg-yellow-100",
+    colorBg2: "bg-yellow-300",
+    textColor: "text-yellow-100"
+  },
+  flying: {
+    colorBg1: "bg-sky-100",
+    colorBg2: "bg-sky-200",
+    textColor: "text-sky-100"
+  },
+  ice: {
+    colorBg1: "bg-cyan-200",
+    colorBg2: "bg-cyan-300",
+    textColor: "text-cyan-200"
+  },
+  water: {
+    colorBg1: "bg-blue-200",
+    colorBg2: "bg-blue-500",
+    textColor: "text-blue-200"
+  },
+  poison: {
+    colorBg1: "bg-violet-500",
+    colorBg2: "bg-violet-700",
+    textColor: "text-violet-500"
+  },
+  ground: {
+    colorBg1: "bg-yellow-500",
+    colorBg2: "bg-yellow-700",
+    textColor: "text-yellow-500"
+  },
+  bug: {
+    colorBg1: "bg-lime-200",
+    colorBg2: "bg-lime-400",
+    textColor: "text-lime-200"
+  },
+  ghost: {
+    colorBg1: "bg-purple-600",
+    colorBg2: "bg-purple-700",
+    textColor: "text-purple-600"
+  },
+  fire: {
+    colorBg1: "bg-orange-300",
+    colorBg2: "bg-orange-500",
+    textColor: "text-orange-600"
+  },
+  grass: {
+    colorBg1: "bg-green-200",
+    colorBg2: "bg-green-600",
+    textColor: "text-green-200"
+  },
+  fighting: {
+    colorBg1: "bg-orange-700",
+    colorBg2: "bg-orange-800",
+    textColor: "text-orange-700"
+  },
+  psychic: {
+    colorBg1: "bg-fuchsia-300",
+    colorBg2: "bg-fuchsia-400",
+    textColor: "text-fuchsia-300"
+  },
+  dragon: {
+    colorBg1: "bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500",
+    colorBg2: "bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500",
+    textColor: "text-indigo-500"
+  },
+  fairy: {
+    colorBg1: "bg-pink-200",
+    colorBg2: "bg-pink-300",
+    textColor: "text-pink-200"
+  },
+  rock: {
+    colorBg1: "bg-gray-300",
+    colorBg2: "bg-gray-400",
+    textColor: "text-gray-300"
+  },
+  steel: {
+    colorBg1: "bg-slate-400",
+    colorBg2: "bg-slate-500",
+    textColor: "text-slate-400"
+  },
+  shadow: {
+    colorBg1: "bg-neutral-400",
+    colorBg2: "bg-neutral-500",
+    textColor: "text-neutral-400"
+  },
+  dark: {
+    colorBg1: "bg-zinc-600",
+    colorBg2: "bg-zinc-700",
+    textColor: "text-zinc-600"
+  },
 }
 // export const cantPokemonGeneracion=[
 //     {first:1,last:151},

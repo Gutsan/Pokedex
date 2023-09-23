@@ -22,7 +22,7 @@ export const usePokemon=(ENDPOINT_POKEMON)=>{
         weight:0,
         base_experience:0,
       });
-
+      
       useEffect(() => {
       getInfoPokemon(ENDPOINT_POKEMON).then(poke=>setPokemon(poke));
       

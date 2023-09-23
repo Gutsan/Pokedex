@@ -31,7 +31,7 @@ export const getInfoForApi = async (ENDPOINT_POKEMON) => {
   export const getInfoPokemon = async (ENDPOINT_POKEMON) => {
     const res = await fetch(ENDPOINT_POKEMON);
     const data = await res.json();
-    const imgFront = data.sprites.other.dream_world.front_default;
+    const imgFront = data.sprites.other.dream_world.front_default??data.sprites.other.home.front_default;
     const name = data.name;
     const type = data.types[0].type.name;
     const id = data.id;
@@ -63,7 +63,7 @@ export const getInfoForApi = async (ENDPOINT_POKEMON) => {
     nameEvolutions.push(data.chain.species.name)
 
     while (evolution.length>0){
-      nameEvolutions.push(evolution[0].species.name)
+      evolution.map(evo=>nameEvolutions.push(evo.species.name))
       evolution=evolution[0].evolves_to
     }
     

@@ -1,5 +1,5 @@
 export const BarStats=({name,value,color})=>{
-const BACKGROUND_FILL=`bg-${color}`
+const BACKGROUND_FILL=color
 const BACKGROUND_EMPTY="bg-gray-600"
 
 const CLASSNAME_1=`w-4 h-4 border border-black rounded ${value>0?BACKGROUND_FILL:BACKGROUND_EMPTY}`
