@@ -5,8 +5,13 @@ import { Header } from "./Components/Header";
 import { ListPokemon } from "./view/ListPokemon";
 import { FilterPovider } from "./Context/filter";
 import { PokemonPage } from "./view/PokemonPage";
+import { Loader } from "./Components/Loader";
+import { useContext } from "react";
+import { LouderContext } from "./Context/contextLouder";
 
 function App() {
+  const {louder}=useContext(LouderContext)
+
   return (
     <>
       <BrowserRouter>
@@ -23,6 +28,7 @@ function App() {
           />
           <Route path="/Pokemon/:idPoke" element={<PokemonPage />} />
         </Routes>
+        {louder?<Loader/>:""}
       </BrowserRouter>
     </>
   );
