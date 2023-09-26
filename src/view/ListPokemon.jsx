@@ -20,7 +20,7 @@ export const ListPokemon=()=>{
     return (
     <>
     {console.log(RenderPage)}
-      <div className="flex flex-col items-center 
+      <div className="flex flex-col items-center max-w-5xl
       animate-fade animate-once animate-duration-1000 animate-delay-1000 animate-ease-out animate-normal animate-fill-both">
         <div className="w-full gap-5 flex h-20 items-center justify-between px-10">
           <Searcher />
